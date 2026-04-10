@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasia Dog Grooming | Professional Dog Grooming in Somercotes, Alfreton</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; color: #333; }
+        h1, h2, h3 { font-family: 'Libre Baskerville', serif; }
+
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.97); box-shadow: 0 2px 20px rgba(0,0,0,0.08); z-index: 1000; }
+        .nav-inner { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; }
+        .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 1.4rem; font-weight: 700; color: #6b4c9a; }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a { text-decoration: none; color: #444; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
+        .nav-links a:hover { color: #6b4c9a; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+        .hamburger span { width: 26px; height: 3px; background: #6b4c9a; border-radius: 2px; }
+
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
+            background: linear-gradient(135deg, #6b4c9a 0%, #9b72cf 50%, #c9a0dc 100%); color: #fff; padding: 120px 24px 80px; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 16px; }
+        .hero p { font-size: 1.2rem; font-weight: 300; max-width: 620px; margin: 0 auto 20px; opacity: 0.9; }
+        .hero-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 8px; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.18); padding: 10px 20px; border-radius: 50px; font-size: 0.9rem; backdrop-filter: blur(4px); }
+        .stars { color: #ffd700; }
+        .btn { display: inline-block; padding: 14px 36px; background: #fff; color: #6b4c9a; font-weight: 600; text-decoration: none; border-radius: 50px; transition: transform 0.3s, box-shadow 0.3s; margin-top: 24px; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+
+        section { padding: 80px 24px; }
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 48px; color: #6b4c9a; }
+
+        .services { background: #faf7fd; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; max-width: 1100px; margin: auto; }
+        .service-card { background: #fff; padding: 36px 28px; border-radius: 20px; text-align: center; box-shadow: 0 4px 24px rgba(107,76,154,0.08); transition: transform 0.3s; }
+        .service-card:hover { transform: translateY(-4px); }
+        .service-icon { font-size: 2.5rem; margin-bottom: 16px; }
+        .service-card h3 { margin-bottom: 10px; color: #6b4c9a; font-size: 1.1rem; }
+        .service-card p { color: #666; line-height: 1.6; font-size: 0.95rem; }
+
+        .reviews { background: #fff; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; max-width: 1100px; margin: auto; }
+        .review-card { background: linear-gradient(135deg, #faf7fd, #f3eefa); padding: 32px; border-radius: 20px; }
+        .review-card .stars { font-size: 1.1rem; display: block; margin-bottom: 12px; }
+        .review-card p { font-style: italic; line-height: 1.7; color: #555; margin-bottom: 12px; }
+        .review-card .reviewer { font-weight: 600; color: #6b4c9a; }
+
+        .about { background: #6b4c9a; color: #fff; text-align: center; }
+        .about .section-title { color: #fff; }
+        .about p { max-width: 700px; margin: 0 auto; line-height: 1.8; font-weight: 300; font-size: 1.05rem; }
+        .about-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 28px; }
+        .about-badge { background: rgba(255,255,255,0.15); padding: 10px 22px; border-radius: 50px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.25); }
+
+        .contact { background: #faf7fd; }
+        .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; margin: auto; }
+        .contact-info h3 { color: #6b4c9a; font-size: 1.3rem; margin-bottom: 20px; }
+        .contact-info p { margin-bottom: 14px; line-height: 1.7; color: #555; }
+        .contact-info a { color: #6b4c9a; text-decoration: none; font-weight: 600; }
+        .info-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+        .info-icon { font-size: 1.3rem; }
+        .map-container { border-radius: 20px; overflow: hidden; min-height: 350px; }
+        .map-container iframe { width: 100%; height: 100%; min-height: 350px; border: 0; }
+
+        footer { background: #3d2a5c; color: rgba(255,255,255,0.6); text-align: center; padding: 32px 24px; }
+        footer a { color: #c9a0dc; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; flex-direction: column; padding: 20px 24px; gap: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+            .nav-links.active { display: flex; }
+            .hamburger { display: flex; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <div class="nav-logo">Kasia Dog Grooming</div>
+        <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <div>
+        <h1>Kasia Dog Grooming</h1>
+        <p>Professional, gentle dog grooming in Somercotes. Where every dog is treated with patience, care, and love.</p>
+        <div class="hero-badges">
+            <div class="hero-badge"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 &bull; 28 reviews</div>
+            <div class="hero-badge">Women-Owned</div>
+            <div class="hero-badge">LGBTQ+ Friendly</div>
+        </div>
+        <a href="tel:07872460492" class="btn">Call 07872 460492</a>
+    </div>
+</section>
+
+<section class="services" id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">&#128704;</div>
+            <h3>Full Groom</h3>
+            <p>A complete pamper including bath, blow-dry, and a breed-appropriate cut tailored to your preferences.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">&#128062;</div>
+            <h3>Gentle Grooming</h3>
+            <p>Patient, calm sessions for timid and older dogs. We take the time to build trust and keep your dog comfortable.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">&#9986;</div>
+            <h3>Breed-Specific Cuts</h3>
+            <p>From Border Collies to Poodles, we deliver neat, tidy, breed-appropriate styling every time.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">&#10024;</div>
+            <h3>Puppy First Groom</h3>
+            <p>A gentle introduction to grooming for puppies, helping them feel safe and relaxed from their very first visit.</p>
+        </div>
+    </div>
+</section>
+
+<section class="reviews" id="reviews">
+    <h2 class="section-title">What Our Clients Say</h2>
+    <div class="reviews-grid">
+        <div class="review-card">
+            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <p>"I used this groomer for the first time for both of my girls. One of my dogs is older and very timid, so I'm always nervous about how she'll do, but she was so patient and gentle with her."</p>
+            <span class="reviewer">Megan Dewey</span>
+        </div>
+        <div class="review-card">
+            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <p>"Did a perfect job on our long haired border collie, never seen his feet look so neat and tidy"</p>
+            <span class="reviewer">Jandy Mind it</span>
+        </div>
+        <div class="review-card">
+            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <p>"Kasia did an amazing job grooming him. Max looks fantastic, and he seems so much happier and comfortable. Kasia was incredibly professional, friendly"</p>
+            <span class="reviewer">Slaw as</span>
+        </div>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <h2 class="section-title">About Kasia</h2>
+    <p>Kasia brings professionalism, warmth, and genuine care to every grooming session. Known for her patience with nervous and timid dogs, she creates a calm, welcoming environment where every dog can relax and enjoy being pampered.</p>
+    <div class="about-badges">
+        <span class="about-badge">Women-Owned Business</span>
+        <span class="about-badge">LGBTQ+ Friendly</span>
+        <span class="about-badge">Welcoming to All</span>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <h2 class="section-title">Book An Appointment</h2>
+    <div class="contact-wrapper">
+        <div class="contact-info">
+            <h3>Contact Details</h3>
+            <div class="info-item">
+                <span class="info-icon">&#128205;</span>
+                <p>14A Victoria St, Somercotes, Alfreton DE55 4HA</p>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">&#128222;</span>
+                <p><a href="tel:07872460492">07872 460492</a></p>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">&#128336;</span>
+                <div>
+                    <p><strong>Opening Hours</strong></p>
+                    <p>Tuesday &ndash; Saturday: 9:30am &ndash; 6pm</p>
+                    <p>Sunday &ndash; Monday: Closed</p>
+                </div>
+            </div>
+        </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2397.5!2d-1.3700!3d53.0700!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s14A+Victoria+St%2C+Somercotes%2C+Alfreton+DE55+4HA!5e0!3m2!1sen!2suk!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Kasia Dog Grooming. All rights reserved.</p>
+    <p style="margin-top: 8px;">Website by <a href="https://innov8workflows.com" target="_blank">Innov8 Workflows</a></p>
+</footer>
+
+</body>
+</html>
